@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    Demande materiel test
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ 
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+   
+    <ion-item lines="full">
+      <ion-label position="floating">Matériel Demandé</ion-label>
+      <ion-select formControlName="materiel" placeholder="materiel">
+        <ion-select-option *ngFor="let mat of data" >{{ mat.desingation }}</ion-select-option>
+       
+      </ion-select>
+       
+
+    </ion-item>
+
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.materiel.errors?.required">
+      Champs Materiel est important
+    </span>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Chantier</ion-label>
+      <ion-select formControlName="chantier" placeholder="Chanier">
+        <ion-select-option value="adm">ADM</ion-select-option>
+        <ion-select-option value="cnss">cnss</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.chantier.errors?.required">
+      Champs chaniter est  important
+    </span>
+  
+    
+
+
+   
+
+
+    
+ 
+
+    <ion-row >
+      <ion-col>
+        <ion-button type="submit" class="marginbuttom"  color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+
+ 
+
+
+
+    
+  </form>
+
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+    <ion-title> {{materiel.Reference}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+   
+    <ion-slides   >
+
+      <ion-slide *ngFor="let image of images " >
+        <img *ngIf="image.lien" src="{{hosting +image.lien}}"  />
+      </ion-slide>
+    
+    </ion-slides>
+
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-badge >{{materiel.Reference}}</ion-badge>
+        
+      </ion-card-subtitle>
+      <ion-card-title>{{materiel.Designation}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item   >
+        <ion-label style="font-size: 12px">Date d'affectation : {{materiel.dateAffectation}}</ion-label>     
+      </ion-item> 
+
+      <ion-item    >
+        <ion-label style="font-size: 12px">Qunatité : {{materiel.getQte}}</ion-label>    
+      </ion-item> 
+    </ion-card-content>
+    <ion-item>
+      <ion-button  color="danger" slot="end">transferer</ion-button>
+    </ion-item>
+  </ion-card>
+<ion-content>
+
+</ion-content>

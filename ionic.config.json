@@ -1,5 +1,8 @@
 {
   "name": "gestionMat",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }

@@ -1,9 +1,81 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>transfertMateriel</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    transferts materiel 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+ 
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+   
+    <ion-item lines="full">
+      <ion-label position="floating">Materiel</ion-label>
+      <ion-input formControlName="materiel" value="{{materiel.Designation}}" readonly  type="text"></ion-input>
+    </ion-item>
+
+     
+
+    <ion-item lines="full">
+      <ion-label position="floating">Chantier</ion-label>
+      <ion-input formControlName="chantierinput" value="{{chantier}}" readonly type="text"></ion-input>
+    </ion-item>
+
+   
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Chantier destination</ion-label>
+        <ion-select formControlName="Vers" placeholder="materiel">
+          <ion-select-option *ngFor="let ch of allchantier"  value="{{ ch.id }}" >{{ ch.Nom }}</ion-select-option>
+        
+        </ion-select> 
+        </ion-item>
+
+         
+
+   <ion-item lines="full">
+      <ion-label position="floating">Qte</ion-label>
+      <ion-input formControlName="qte"   type="number"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label id="profile_image" color="primary" stacked>Profilbild wählen</ion-label>
+      <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
+    </ion-item>
+    -->
+
+    <span class="error ion-padding" *ngIf="checkqte">
+      qté doit être inferieur ou égale  a  {{materiel.getQte}}
+    </span>
+
+
+    
+
+
+
+    
+ 
+
+    <ion-row >
+      <ion-col>
+        <ion-button type="submit" class="marginbuttom"  color="danger" expand="block">Soumettre </ion-button>
+      </ion-col>
+    </ion-row>
+
+ 
+
+
+
+    
+  </form>
+
 </ion-content>
+

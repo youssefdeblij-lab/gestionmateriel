@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('./make-materiel/make-materiel.module').then( m => m.MakeMaterielPageModule)
   },
   {
-    path: 'transfert-materiel',
+    path: 'transfert-materiel/:id/:nameChantier',
     loadChildren: () => import('./members/transfert-materiel/transfert-materiel.module').then( m => m.TransfertMaterielPageModule)
   },
 ];

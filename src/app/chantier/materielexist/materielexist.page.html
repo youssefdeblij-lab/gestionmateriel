@@ -14,21 +14,21 @@
 <ion-content>
   
   <ion-list  *ngFor="let materiel of List_materiels "    >
-    <ion-card   *ngIf="materiel.Idmat" [routerLink]="['/chantier-single/' + materiel.Idmat ]" >
+    <ion-card   *ngIf="materiel.Idmat"  >
       <ion-item    >
-        <ion-button  color="danger" slot="end">transferer</ion-button>
-        <ion-button fill="outline" >{{materiel.Reference}}</ion-button>  
+        <ion-button  color="danger" slot="end" [routerLink]="['/transfert-materiel/' + materiel.Idmat  + '/' +  chantier ]" >transferer</ion-button>
+        <ion-button fill="outline" [routerLink]="['/chantier-single/' + materiel.Idmat ]">{{materiel.Reference}}</ion-button>  
       </ion-item>
     
-      <ion-item     >
-        <ion-label>{{materiel.Designation}}</ion-label>       
+      <ion-item    [routerLink]="['/chantier-single/' + materiel.Idmat ]" >
+        <ion-label >{{materiel.Designation}}</ion-label>       
       </ion-item>
 
-      <ion-item   >
+      <ion-item   [routerLink]="['/chantier-single/' + materiel.Idmat ]">
         <ion-label style="font-size: 12px">Date d'affectation : {{materiel.dateAffectation}}</ion-label>     
       </ion-item> 
 
-      <ion-item    >
+      <ion-item   [routerLink]="['/chantier-single/' + materiel.Idmat ]" >
         <ion-label style="font-size: 12px">Qunatité : {{materiel.getQte}}</ion-label>    
       </ion-item> 
     

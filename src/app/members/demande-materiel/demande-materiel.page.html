@@ -6,12 +6,12 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    Demande materiel test
+    Demande materiel  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+ 
  
   <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
 
@@ -19,7 +19,7 @@
     <ion-item lines="full">
       <ion-label position="floating">Matériel Demandé</ion-label>
       <ion-select formControlName="materiel" placeholder="materiel">
-        <ion-select-option *ngFor="let mat of data" >{{ mat.desingation }}</ion-select-option>
+        <ion-select-option *ngFor="let mat of data" value="{{mat.desingation}}" >{{ mat.desingation }}</ion-select-option>
        
       </ion-select>
        
@@ -34,8 +34,7 @@
     <ion-item lines="full">
       <ion-label position="floating">Chantier</ion-label>
       <ion-select formControlName="chantier" placeholder="Chanier">
-        <ion-select-option value="adm">ADM</ion-select-option>
-        <ion-select-option value="cnss">cnss</ion-select-option>
+        <ion-select-option *ngFor="let chant of chantiers" value="{{chant.desingation}}" >{{ chant.desingation }}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -43,6 +42,17 @@
       Champs chaniter est  important
     </span>
   
+
+    <ion-item lines="full">
+      <ion-label position="floating">Quantité</ion-label>
+       
+        <ion-input type="text"  formControlName="qte" ></ion-input>
+       
+    </ion-item>
+
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.qte.errors?.required">
+      Champs chaniter est  important
+    </span>
     
 
 

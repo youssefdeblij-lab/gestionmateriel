@@ -12,6 +12,7 @@ import { AuthenticationService } from 'src/app/services/Authentication.service';
 export class ListPage implements OnInit {
    chantiers=[] ;
     objResponsable:any ;
+    isempty:boolean=true;
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
@@ -23,7 +24,8 @@ export class ListPage implements OnInit {
           response.json()
               .then(data => {
                  // console.log(data);
-                  this.chantiers = data;
+                  this.chantiers = data; 
+                  this.isempty =false;
               });
           
       });

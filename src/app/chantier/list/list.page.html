@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-item  lines="full"  color='light' *ngIf="isempty"  >     
+    <h6 >chargement...  </h6>       
+  </ion-item>
 
   <ion-list routerDirection="forward"   *ngFor="let mat of chantiers" >
     

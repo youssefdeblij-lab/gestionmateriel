@@ -17,7 +17,9 @@
     <ion-slides   >
 
       <ion-slide *ngFor="let image of images " >
-        <img *ngIf="image.lien" src="{{hosting +image.lien}}"  />
+        <img *ngIf="image.lien && image.typePhoto == 'affected'" src="{{ image.lien}}"  />
+       
+
       </ion-slide>
     
     </ion-slides>
@@ -38,9 +40,7 @@
         <ion-label style="font-size: 12px">Qunatité : {{materiel.getQte}}</ion-label>    
       </ion-item> 
     </ion-card-content>
-    <ion-item>
-      <ion-button  color="danger" slot="end" >transferer</ion-button>
-    </ion-item>
+    
   </ion-card>
 <ion-content>
 

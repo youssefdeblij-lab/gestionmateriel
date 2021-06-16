@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+    <ion-title>{{dataTransfert.Reference}}</ion-title>
+    
+   
+  </ion-toolbar>
+  <ion-item color="{{setcolor(dataTransfert.Status)}}">
+    <ion-label>Status: {{dataTransfert.Status}}</ion-label>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+   
+    <ion-slides   >
+
+      <ion-slide *ngFor="let image of imgs " >
+        <img *ngIf="image.Lien && image.TypePhoto == 'transferts' " src="{{hosting +'/upload/'+ image.Lien}}"  />
+       
+
+      </ion-slide>
+    
+    </ion-slides>
+
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-badge >{{dataTransfert.Reference}}</ion-badge>
+        
+      </ion-card-subtitle>
+      <ion-card-title>{{dataTransfert.Designation}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item   >
+        <ion-label style="font-size: 12px">Date de Transfert : {{dataTransfert.DateTransferts}}</ion-label>     
+      </ion-item> 
+
+      <ion-item    >
+        <ion-label style="font-size: 12px">Qunatité : {{dataTransfert.Qte}}</ion-label>    
+      </ion-item> 
+    </ion-card-content>
+    <ion-item>
+   
+     
+      <ion-button  color="dark"  >Vers : {{dataTransfert.ChantierVersDesingation}}</ion-button>
+    </ion-item>
+    
+  </ion-card>
+<ion-content>
+
+</ion-content>
+

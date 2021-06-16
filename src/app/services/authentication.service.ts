@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/Storage';
-import { ToastController, Platform } from '@ionic/angular';
+import {   Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Md5 } from '../../../node_modules/ts-md5/dist/md5';
+import { AlertController, LoadingController } from '@ionic/angular';
+
 
  
  
@@ -17,7 +19,9 @@ export class AuthenticationService {
     private router: Router,
     public storage: Storage,
     public  platform: Platform,
-    private toastCtrl: ToastController
+  
+    public loadingController: LoadingController,
+    public alertController: AlertController 
       ) {
     this.platform.ready().then(() => {
       this.ifLoggedIn();
@@ -33,7 +37,18 @@ export class AuthenticationService {
   }
  
  
-  login(user : string,pass : string) {
+  async login(user : string,pass : string) {
+   
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'chargement...',
+       
+    });
+ 
+    
+
+    loading.present();
+
    
     
     const md5 = new Md5();
@@ -57,15 +72,17 @@ export class AuthenticationService {
              
              if(  data.Response == "true" ){
               this.storage.set('USER_INFO', data).then((response) => {
+                loading.dismiss();
                 this.router.navigate(['dashboard']);
                 this.authState.next(true);
               });
              
             }else{
-              this.presentToast();
+              this.presentAlert("Login / password incorrect");
+              loading.dismiss();
             }
 
-          });
+          })
       
   });
     
@@ -77,6 +94,7 @@ export class AuthenticationService {
     this.storage.remove('USER_INFO').then(() => {
       this.router.navigate(['login']);
       this.authState.next(false);
+      this.presentAlert("Déconnecté");
     });
   }
  
@@ -84,12 +102,17 @@ export class AuthenticationService {
     return this.authState.value;
   }
  
-  async presentToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Login / password incorrect',
-      duration: 2000
+  
+
+  async presentAlert(msg) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'information',
+      message: msg,
+      buttons: ['OK']
     });
-    toast.present();
+
+    await alert.present();
   }
  
 }

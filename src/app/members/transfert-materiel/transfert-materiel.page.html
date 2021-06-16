@@ -6,7 +6,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    transferts materiel 
+    Transfert {{materiel.Designation}}  
   </ion-toolbar>
 </ion-header>
 
@@ -33,8 +33,8 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Chantier destination</ion-label>
-        <ion-select formControlName="Vers" placeholder="materiel">
-          <ion-select-option *ngFor="let ch of allchantier"  value="{{ ch.id }}" >{{ ch.Nom }}</ion-select-option>
+        <ion-select formControlName="Vers" placeholder="Chantier vers">
+          <ion-select-option *ngFor="let ch of allchantier" value="{{ ch.id }}" >{{ ch.Nom }}</ion-select-option>
         
         </ion-select> 
         </ion-item>
@@ -46,22 +46,59 @@
       <ion-input formControlName="qte"   type="number"></ion-input>
     </ion-item>
 
-    <!-- <ion-item>
-      <ion-label id="profile_image" color="primary" stacked>Profilbild wählen</ion-label>
-      <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
-    </ion-item>
-    -->
+     
+     
 
     <span class="error ion-padding" *ngIf="checkqte">
       qté doit être inferieur ou égale  a  {{materiel.getQte}}
     </span>
 
 
+     
+ 
+  
+
+    
+   
+    <ion-list>
+      <ion-item *ngIf="images.length == 0" >
+        <p  text-center>Pas d'image !</p>
+      </ion-item>
+
+
+      <ion-item *ngFor="let img of images; index as pos" text-wrap>
+        <ion-thumbnail slot="start">
+          <ion-img [src]="img.path"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          {{ img.name }}
+        </ion-label>
+        
+        <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item >
+      <ion-button color="dark" (click)="selectImage()">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Ajouter des Images</ion-button>
+      </ion-item>
+    </ion-list>
+ 
+   
+ 
+    
+  
+    
+ 
+ 
+
+      
     
 
 
-
     
+
  
 
     <ion-row >
@@ -69,13 +106,18 @@
         <ion-button type="submit" class="marginbuttom"  color="danger" expand="block">Soumettre </ion-button>
       </ion-col>
     </ion-row>
-
- 
-
+    <ion-row *ngIf="loge != '0'" >
+      Statut :  {{loge}}
+    </ion-row >
 
 
     
   </form>
+
+
+  
+    
+
 
 </ion-content>
 

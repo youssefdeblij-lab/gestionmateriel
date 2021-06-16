@@ -3,60 +3,90 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> Gestion de matériel</ion-title>
+    <ion-title> Gestion de materiel</ion-title>
 
   </ion-toolbar>
   
 </ion-header>
 
-<ion-content>
+<ion-content >
  
-  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed" style="background: none; ">
     <ion-fab-button color="danger" (click)="logoutUser()">
       <ion-icon name="power" ></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list>
+  <ion-list style="background: none; ">
 
-    <ion-item [routerLink]="'/list'" routerDirection="forward" >
+    <ion-item [routerLink]="'/list'" routerDirection="forward" style="background: none; " >
        
       <ion-icon name="list" ></ion-icon>
       <ion-label>
-        <h2> &nbsp; List des chantiers/materiel</h2>
+        <h2> &nbsp; Liste des chantiers/materiels</h2>
       </ion-label>
     </ion-item>
 
-    <ion-item [routerLink]="'/demande-materiel'" routerDirection="forward" >
+    <ion-item [routerLink]="'/demande-materiel'" routerDirection="forward" style="background: none; ">
        
       <ion-icon name="add" ></ion-icon>
       <ion-label>
-        <h2> &nbsp; Créer un demande materiel</h2>
+        <h2> &nbsp; Créer une demande materiel</h2>
       </ion-label>
     </ion-item>
 
-
-    <ion-item>
+    <ion-item [routerLink]="['/ajout/' + id]" routerDirection="forward" style="background: none; ">
        
-      <ion-icon name="swap-horizontal-outline"></ion-icon>
+      <ion-icon name="add" ></ion-icon>
       <ion-label>
-        <h2> &nbsp; Transférer un materiel</h2>
+        <h2> &nbsp; Demande par lots</h2>
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item [routerLink]="'/list/lots'" routerDirection="forward"style="background: none; " >
+       
+      <ion-icon name="add" ></ion-icon>
+      <ion-label>
+        <h2> &nbsp; List demande lots reçu</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="'/mesdemandeslot'" routerDirection="forward"style="background: none; " >
+       
+      <ion-icon name="add" ></ion-icon>
+      <ion-label>
+        <h2> &nbsp; Mes demandes par lots</h2>
+      </ion-label>
+    </ion-item>
+
+
+    
+
+
+    
+    
+
+    <ion-item [routerLink]="'/listdemendemateriel'">
        
       <ion-icon name="albums-outline" ></ion-icon>
       <ion-label>
-       <h2> &nbsp; Les demandes réalisés</h2>
+       <h2> &nbsp; Liste  des demandes materiels </h2>
       </ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item [routerLink]="'/list-chantier-transfert'">
        
-      <ion-icon name="send-outline"></ion-icon>
+      <ion-icon name="reorder-four-outline"></ion-icon>
       <ion-label>
-        <h2> &nbsp; Les transférs réalisés</h2>
+        <h2> &nbsp;Liste  des transferts  réalisés</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="'/transfertaquis/'">
+       
+      <ion-icon name="swap-horizontal-outline"></ion-icon>
+      <ion-label>
+        <h2> &nbsp;Liste des materiels reçu</h2>
       </ion-label>
     </ion-item>
   

@@ -13,12 +13,22 @@ import { HTTP } from '@ionic-native/http/ngx';
 
 
 
+
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/Authentication.service';
 
 import {ExchangedataService} from "../app/services/exchangedata.service";
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+ 
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +45,14 @@ import {ExchangedataService} from "../app/services/exchangedata.service";
     ExchangedataService,
     AuthGuardService,
     AuthenticationService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera,
+    File,
+    WebView,
+    FilePath,
+    FileTransfer
+     
+
   ],
   bootstrap: [AppComponent]
 })

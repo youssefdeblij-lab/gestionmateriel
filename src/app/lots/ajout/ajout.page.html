@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+    <ion-title>Transfert par lots</ion-title>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate   >
+
+   
+    
+
+    
+
+    <ion-item lines="full">
+      <ion-label position="floating">Chantier Source</ion-label>
+      <ion-select  formControlName="depuis"  placeholder="Chantier Depuis" (ionChange)="onChange($event)">
+
+        <ion-select-option  *ngFor="let chant of chantierResp;" value="{{chant.Id}}">{{chant.desingation}}</ion-select-option>
+       
+      </ion-select>
+    </ion-item>
+
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.depuis.errors?.required">
+      Ce Champs  est  important
+    </span>  
+
+    <ion-item lines="full">
+      <ion-label position="floating"> Vers</ion-label>
+      <ion-select  formControlName="vers"  placeholder="Chantier Vers" >
+
+        <ion-select-option  *ngFor="let chant of allCantier;" value="{{chant.id}}">{{chant.Nom}}</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.vers.errors?.required">
+      Ce Champs  est  important
+    </span>  
+   
+
+    <ion-item *ngFor="let att of anArray; let idx = index">
+              <ion-button (click)='deletindex(idx)'   *ngIf='idx != 0' color="danger" slot="end" expand="block">X</ion-button>
+
+              <ion-label position="floating"> Materiel : </ion-label>
+
+              <ion-select  placeholder="Materiel"  [ngModelOptions]="{standalone: true}" [(ngModel)]="anArray[idx].idMat" >
+
+                <ion-select-option  *ngFor="let mat of matos" [value]="mat.Idmat">
+                  {{mat.Designation}}  {{mat.Reference}}
+
+                </ion-select-option>
+                
+              </ion-select>
+
+             
+              <ion-label position="floating"> Quantité : </ion-label>
+              <ion-input type="text"  text-right [ngModelOptions]="{standalone: true}"  [(ngModel)]="anArray[idx].qte"></ion-input>
+    </ion-item>
+    
+
+    <ion-row >
+      <ion-col>
+        <ion-button  color="dark"   class="marginbuttom"   (click)="Add()"  expand="block">[+]&nbsp;Ajouter materiel</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-button type="submit" class="marginbuttom"  color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+
+ 
+
+
+
+    
+  </form>
+
+</ion-content>

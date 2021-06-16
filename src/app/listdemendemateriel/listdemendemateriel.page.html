@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+    <ion-title>Mes demendes materiel</ion-title>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list  *ngFor="let elemnt of demandes "    >
+    <ion-card   *ngIf="elemnt.Materiel"  >
+      <ion-item    >
+        <ion-button  color="primary" slot="end" >Status : {{elemnt.Status}}</ion-button>
+      </ion-item>
+    
+      <ion-item      >
+        <ion-label >{{elemnt.Materiel}}</ion-label>       
+      </ion-item>
+
+
+      <ion-item     >
+        <ion-label >Chantier : {{elemnt.Chantier}}</ion-label>       
+      </ion-item>
+      
+      <ion-item   >
+        <ion-label style="font-size: 12px">Date de demande : {{elemnt.Date}}</ion-label>     
+      </ion-item> 
+
+      <ion-item     >
+        <ion-label style="font-size: 12px">Qunatité : {{elemnt.Qte}}</ion-label>    
+      </ion-item> 
+    
+      
+    </ion-card>
+  </ion-list> 
+
+</ion-content>

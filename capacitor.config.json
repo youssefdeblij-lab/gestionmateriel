@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "gestionMat",
+  "appId": "io.gestionmat.starter",
+  "appName": "Httc-Materiel",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -13,7 +13,7 @@
       "FadeSplashScreenDuration": "300",
       "SplashShowOnlyFirstTime": "false",
       "SplashScreen": "screen",
-      "SplashScreenDelay": "3000"
+      "SplashScreenDelay": "8000"
     }
   }
 }

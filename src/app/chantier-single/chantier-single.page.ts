@@ -22,7 +22,7 @@ export class ChantierSinglePage implements OnInit {
       this.params = this.route.params.subscribe(params => {this.idmateriel = params['id_materiel'];  });
   }
   ngOnInit() {
-    fetch(environment.APiHotst + '/materiel/affected/getdetails/' + this.idmateriel)
+    fetch(environment.APiHotst + '/materiel/affected/getdetails/' + this.idmateriel) 
     .then(response => { response.json()
       .then(data => {
         //ssd

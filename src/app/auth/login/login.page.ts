@@ -14,17 +14,22 @@ export class LoginPage implements OnInit {
   defaultDate = "1987-06-30";
   isSubmitted = false;
   ErrorText = "";
+  MessageObj = {TextMessage:"wait...."};
 
   constructor(public formBuilder: FormBuilder,public navCtrl: NavController, private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       
      
-    })
-  }
+    });
+
+    
+
+
+  } 
 
   
 

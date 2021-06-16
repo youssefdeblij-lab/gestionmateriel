@@ -12,6 +12,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-item  lines="full"  color='light' *ngIf="isempty"  >     
+    <h6 >chargement...  </h6>       
+  </ion-item>
   
   <ion-list  *ngFor="let materiel of List_materiels "    >
     <ion-card   *ngIf="materiel.Idmat"  >

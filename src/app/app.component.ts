@@ -6,6 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/Authentication.service';
 
+
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

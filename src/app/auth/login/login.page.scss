@@ -4,3 +4,9 @@ form{
 .marginbuttom{ margin-top: 40px; }
 ion-img{margin-top: 10px;padding:12px}
 .error{color:red;}
+
+ion-content{
+   --background: #999 url('../../../assets/img/loginBg.jpg') no-repeat center center / cover;
+   padding: 20px !important;
+   margin-top:35px;
+ }

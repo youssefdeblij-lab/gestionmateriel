@@ -15,7 +15,8 @@ export const environment = {
     measurementId: "G-NBT2HPJNVT"
   },
   token:"662b7d80a606e2cacb5153aa754cee10",
-  APiHotst : "http://127.0.0.1:8000"
+  APiHotst : "https://betatop.ma/api/public",
+  ApiUnsecured:  "https://betatop.ma/api/public"
 };
 /*
  * For easier debugging in development mode, you can import the following file

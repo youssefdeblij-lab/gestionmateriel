@@ -12,6 +12,8 @@ export class MaterielexistPage implements OnInit {
   id:any;
   chantier:any;
   params:any;
+  isempty:boolean=true;
+
   List_materiels:any = [] ;
   constructor(private route: ActivatedRoute) { 
     this.params = this.route.params.subscribe(params => {
@@ -28,7 +30,12 @@ export class MaterielexistPage implements OnInit {
       response.json()
           .then(data => {
              // console.log(data);
-              this.List_materiels = data;
+             data.forEach(element => {
+               if(element.getQte != 0 ) this.List_materiels.push(element);
+             });
+              //this.List_materiels = data;
+              this.isempty =false;
+
           });
       
   });

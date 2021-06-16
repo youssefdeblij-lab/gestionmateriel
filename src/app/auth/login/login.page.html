@@ -1,49 +1,45 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-img src="assets/img/logo.png"></ion-img> 
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-item-divider>
-    <ion-label > Gestion de materiel - Auth     </ion-label>
-  </ion-item-divider>
- 
-  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
-
-    <ion-item lines="full">
-      <ion-label position="floating">UserName</ion-label>
-      <ion-input formControlName="name" type="text"></ion-input>
-    </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-      Name is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
-      Name should be min 6 chars long.
-    </span>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input formControlName="password" type="password"></ion-input>
-    </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-      Name is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
-      Name should be min 6 chars long.
-    </span>
- 
-
-    <ion-row >
-      <ion-col>
-        <ion-button type="submit" class="marginbuttom"  color="danger" expand="block">Submit</ion-button>
-        <span class="error ion-padding">
-         {{ErrorText}}
-        </span>
+  <ion-grid class="ion-padding" style="margin-top: 22px;">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6"  style="background-color: #FFF;"> 
+        
+          <img src="assets/img/logo.png" >
        
       </ion-col>
+     
     </ion-row>
-  </form>
-
   
+    
+  </ion-grid>
+<form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate style="margin:222px 25px 25px 25px">
+
+  <ion-item lines="full">
+    <ion-label  style="font-weight: 650; ">Nom d'utilisateur</ion-label>
+    <ion-input formControlName="name" type="text"></ion-input>
+  </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+    Nom d'utilisateur obligatoire.
+  </span>
+   <br>
+
+  <ion-item lines="full">
+    <ion-label style="font-weight: 650;" >Mot de passe</ion-label>
+    <ion-input formControlName="password" type="password"></ion-input>
+  </ion-item>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+    Le mot de passe est obligatoire.
+  </span>
+  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+    Password should be min 6 chars long.
+  </span>
+
+
+ 
+    <span>
+      <ion-button type="submit" class="marginbuttom"  color="danger" expand="block" style="font-weight: 650;">Se Connecter</ion-button>
+     
+     
+    </span>
+  
+</form>
 </ion-content>

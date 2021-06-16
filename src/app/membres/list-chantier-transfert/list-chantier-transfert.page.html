@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+    <ion-title>Transfert réalisés</ion-title>
+    
+   
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item >  
+    <ion-icon name="funnel-outline"></ion-icon> 
+    <ion-select  okText="trier" cancelText="annuler" (ionChange)="onChange($event)"> 
+   
+      <ion-select-option value="date">Date Transfert</ion-select-option>
+      <ion-select-option value="status">Status</ion-select-option>
+      
+     
+    </ion-select>
+  </ion-item>
+
+  <ion-item  lines="full"  color='light' *ngIf="isempty"  >     
+    <h6 >chargement...  </h6>       
+  </ion-item>
+
+  <ion-list  *ngFor="let elemnt of List_transfert "    >
+    <ion-card   *ngIf="elemnt.Reference"  >
+      <ion-item    >
+        <ion-button  color="{{setcolor(elemnt.Status)}}" slot="end" [routerLink]="['/membrestransfertmaterielview/' + elemnt.Id    ]" >Status : {{elemnt.Status}}</ion-button>
+
+        <ion-button fill="outline" [routerLink]="['/membrestransfertmaterielview/' + elemnt.Id    ]">{{elemnt.Reference}}</ion-button>  
+      </ion-item>
+    
+      <ion-item    [routerLink]="['/membrestransfertmaterielview/' +  elemnt.Id    ]"   >
+        <ion-label >{{elemnt.Designation}}</ion-label>       
+      </ion-item>
+
+
+      <ion-item    [routerLink]="['/membrestransfertmaterielview/' + elemnt.Id     ]" >
+        <ion-label >Depuis : {{elemnt.chantierSource}}</ion-label>       
+      </ion-item>
+
+
+      <ion-item    [routerLink]="['/membrestransfertmaterielview/' +   elemnt.Id ]" >
+        <ion-label >Vers : {{elemnt.ChantierVersDesingation}}</ion-label>       
+      </ion-item>
+
+
+      <ion-item   [routerLink]="['/chantier-single/' +   elemnt.Id  ]">
+        <ion-label style="font-size: 12px">Date de transfert : {{elemnt.DateTransferts}}</ion-label>     
+      </ion-item> 
+
+      <ion-item   [routerLink]="['/chantier-single/' +   elemnt.Id ]" >
+        <ion-label style="font-size: 12px">Qunatité : {{elemnt.Qte}}</ion-label>    
+      </ion-item> 
+    
+      
+    </ion-card>
+  </ion-list> 
+</ion-content>
+
